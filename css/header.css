@@ -1,0 +1,162 @@
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #24213e;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.open-nav {
+  display: none;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+@media (max-width: 425px) {
+  .open-nav {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 30px;
+    z-index: 3;
+  }
+  .open-nav .line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  .open-nav .line.line_1 {
+    top: 0;
+  }
+  .open-nav .line.line_2 {
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+  .open-nav .line.line_3 {
+    bottom: 0;
+  }
+  .open-nav.open .line_2 {
+    display: none;
+  }
+  .open-nav.open .line_3, .open-nav.open .line_1 {
+    position: absolute;
+    top: 15px;
+  }
+  .open-nav.open .line_1 {
+    transform: rotate(50deg);
+  }
+  .open-nav.open .line_3 {
+    transform: rotate(-50deg);
+  }
+}
+
+nav {
+  width: 100%;
+  max-width: 700px;
+}
+nav .list-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+nav .list-menu li {
+  margin: 5px;
+}
+nav .list-menu a {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+nav .list-menu a:hover {
+  color: #25a6b8;
+}
+nav .list-menu a:hover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: #25a6b8;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+nav .list-menu a::before {
+  content: "";
+  width: 0;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+@media (max-width: 425px) {
+  nav {
+    position: fixed;
+    top: 47px;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 166, 184, 0.9);
+  }
+  nav .list-menu {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50px;
+  }
+  nav .list-menu a {
+    display: block;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  nav .list-menu a:hover {
+    color: #fff;
+  }
+  nav .list-menu a:hover::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  nav .list-menu a::before {
+    content: "";
+    width: 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  nav.active {
+    left: 0;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */

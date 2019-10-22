@@ -1,0 +1,27 @@
+$font-type: Roboto, sans-serif;
+
+
+@mixin transition($value) {
+    -webkit-transition: $value;
+    -moz-transition: $value;
+    -o-transition: $value;
+    transition: $value;
+}
+
+
+* {
+    box-sizing: border-box;
+    @include transition(all .3s ease);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: $font-type;
+}
+
+ul, ol, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

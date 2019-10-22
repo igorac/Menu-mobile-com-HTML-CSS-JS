@@ -1,0 +1,196 @@
+$header_width: 1200px;
+$header_bg: #24213e;
+$header_menu_width: 700px;
+$header_color_link: #fff;
+$header_color_btn: #fff;
+$header_color_hover: #25a6b8;
+
+
+@mixin transition($value) {
+    -webkit-transition: $value;
+    -moz-transition: $value;
+    -o-transition: $value;
+    transition: $value;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: $header_bg;
+}
+
+.container {
+    max-width: $header_width;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.open-nav {
+    display: none;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    @media (max-width: 425px) {
+        display: block;
+        position: relative;
+        width: 40px;
+        height: 30px;
+        z-index: 3;
+
+        & .line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: $header_color_btn;
+            border-radius: 5px;
+            
+
+            &.line_1 {
+                top: 0;
+            }
+
+            &.line_2 {
+                bottom: 50%;
+                transform: translateY(50%);
+            }
+
+            &.line_3 {
+                bottom: 0;
+            }
+        }
+
+        &.open {
+            & .line_2 {
+                display: none;
+            }
+
+            & .line_3,
+            & .line_1 {
+                position: absolute;
+                top: 15px;
+            }
+
+            & .line_1 {
+                transform: rotate(50deg);
+            }
+
+            & .line_3 {
+                transform: rotate(-50deg);
+            }
+            
+        }
+    }
+}
+
+nav {
+    width: 100%;
+    max-width: $header_menu_width;
+
+    & .list-menu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        
+        & li {
+            margin: 5px;
+        }
+        
+        & a {
+            position: relative;
+            text-decoration: none;
+            color: $header_color_link;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+
+            &:hover {
+                color: $header_color_hover;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    left: 0;
+                    bottom: 0;
+                    background: $header_color_hover;
+                    @include transition(all .3s ease);
+                }
+            }
+
+            &::before {
+                content: '';
+                width: 0;
+                @include transition(all .3s ease);
+            }
+
+           
+        }
+    }
+
+
+    // Responsivo
+    @media (max-width: 425px) {
+
+        position: fixed;
+        top: 47px;
+        left: 100%;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(37, 166, 184, 0.9);
+        
+
+        & .list-menu {
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            top: 50px;
+
+            & a {
+                display: block;
+                margin-bottom: 20px;
+                color: $header_color_link;
+
+                &:hover {
+                    color: $header_color_link;
+                    
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        height: 2px;
+                        left: 0;
+                        bottom: 0;
+                        background-color: $header_color_link;
+                        @include transition(all .3s ease);
+                    }
+                }
+
+                &::before {
+                    content: '';
+                    width: 0;
+                    @include transition(all .3s ease);
+                }
+                
+            }
+        }
+
+        &.active {
+            left: 0;
+        }
+    }
+
+}
+
+
